@@ -5,24 +5,24 @@ public class Car {
     private int car_id;
     private String car_name;
     private String car_color;
-    private String car_engine;
     private int car_year;
+    private double car_price;
     private int seller_id;
 
-    public Car(String car_name, String car_color, String car_engine, int car_year, int seller_id) {
+    public Car(String car_name, String car_color, int car_year, double car_price, int seller_id) {
         this.car_name = car_name;
         this.car_color = car_color;
-        this.car_engine = car_engine;
         this.car_year = car_year;
+        this.car_price = car_price;
         this.seller_id = seller_id;
     }
 
-    public Car(int car_id, String car_name, String car_color, String car_engine, int car_year, int seller_id) {
+    public Car(int car_id, String car_name, String car_color, int car_year, double car_price, int seller_id) {
         this.car_id = car_id;
         this.car_name = car_name;
         this.car_color = car_color;
-        this.car_engine = car_engine;
         this.car_year = car_year;
+        this.car_price = car_price;
         this.seller_id = seller_id;
     }
 
@@ -50,20 +50,20 @@ public class Car {
         this.car_color = car_color;
     }
 
-    public String getCar_engine() {
-        return car_engine;
-    }
-
-    public void setCar_engine(String car_engine) {
-        this.car_engine = car_engine;
-    }
-
     public int getCar_year() {
         return car_year;
     }
 
     public void setCar_year(int car_year) {
         this.car_year = car_year;
+    }
+
+    public double getCar_price() {
+        return car_price;
+    }
+
+    public void setCar_price(double car_price) {
+        this.car_price = car_price;
     }
 
     public int getSeller_id() {
