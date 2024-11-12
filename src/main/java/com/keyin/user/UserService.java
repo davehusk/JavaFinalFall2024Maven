@@ -3,7 +3,6 @@ package com.keyin.user;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.SQLException;
-import java.util.List;
 
 public class UserService {
 
@@ -32,6 +31,28 @@ public class UserService {
 
 
         return true;
+    }
+
+    public User login(String username, String password) throws SQLException{
+        if(username == null || password == null){
+            System.out.println("The User Does Not Exist");
+        }
+
+        User user = userDAO.getUserByUsername(username);
+
+        if(user == null){
+            System.out.println("The User Does Not Exist! ");
+            return null;
+        }
+
+        if(!BCrypt.checkpw(password, user.getPassword())){
+            System.out.println("Wrong Password, Please Try Again!");
+            return null;
+        }
+
+        System.out.println("User Has Passed Auth");
+
+        return user;
     }
 
 

@@ -10,6 +10,12 @@ public class EcomApp {
    private static final UserService userService = new UserService();
     public static void main(String[] args) throws SQLException {
 
+
+//        userService.login("KHollet","kyle");
+
+        User user = userService.login("KHollet","kyle");
+
+        System.out.println(user.getEmail());
         userService.getAllUsers();
 
 

@@ -28,7 +28,6 @@ public class UserDAO {
                 System.out.println("Password: " + password);
                 System.out.println("------------------------------------");
 
-
             }
 
         };
@@ -39,17 +38,31 @@ public class UserDAO {
 
         try(Connection conn = DatabaseConnection.getConnection()){
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getPassword());
-
             preparedStatement.executeUpdate();
 
-
-
         }
+    }
+
+    public User getUserByUsername(String username) throws SQLException {
+        String sql = "SELECT * FROM users WHERE username = ?";
+        try(Connection conn = DatabaseConnection.getConnection()){
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                if (rs.next()) {
+                    return new User(
+                            rs.getString("username"),
+                            rs.getString("email"),
+                            rs.getString("password")
+
+                    );
+                }
+            }
+        }
+        return null;
     }
 
 }
