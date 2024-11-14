@@ -54,6 +54,7 @@ public class UserDAO {
             try (ResultSet rs = preparedStatement.executeQuery()){
                 if (rs.next()) {
                     return new User(
+                            rs.getInt("user_id"),
                             rs.getString("username"),
                             rs.getString("email"),
                             rs.getString("password")

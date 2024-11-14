@@ -1,5 +1,7 @@
 package com.keyin;
 
+import com.keyin.cars.Car;
+import com.keyin.cars.CarService;
 import com.keyin.user.User;
 import com.keyin.user.UserService;
 
@@ -8,6 +10,7 @@ import java.util.Scanner;
 
 public class EcomApp {
    private static final UserService userService = new UserService();
+   private static final CarService carService = new CarService();
     public static void main(String[] args) throws SQLException {
 
 
@@ -71,17 +74,45 @@ public class EcomApp {
         }
     }
 
-    private static void kyleDashBoard(Scanner sc, User loggedInUser) {
+    private static void kyleDashBoard(Scanner sc, User loggedInUser) throws SQLException {
         System.out.println("Welcome To Kyle Dash Board");
         System.out.println("Please Choose What You Wanna Do!");
         System.out.println("1: Print Kyle info");
+        System.out.println("2: Create A New Car ");
         int choice = sc.nextInt();
 
         if (choice == 1) {
             printKyleInfo(loggedInUser);
+        } else if (choice == 2) {
+            createNewCarDashBoard(sc,loggedInUser);
         }
 
+
     }
+
+    private static void createNewCarDashBoard(Scanner sc, User loggedInUser) throws SQLException {
+        System.out.println("Welcome To Create A New Car!");
+        System.out.println("Please Choose What You Wanna Do!");
+        System.out.println("Enter Car Make: ");
+        String make = sc.next();
+        System.out.println("Enter Car Model: ");
+        String model = sc.next();
+        System.out.println("Enter Car Year: ");
+        int year = sc.nextInt();
+        System.out.println("Enter Car Price: ");
+        double price = sc.nextDouble();
+
+        Car car = new Car(make,model,year,price,loggedInUser.getUser_id());
+
+        carService.createNewCar(car);
+
+
+
+
+
+
+    }
+
 
     private static void printKyleInfo(User loggedInUser) {
         System.out.println("Kyle Details:");
