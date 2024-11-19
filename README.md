@@ -1,14 +1,14 @@
 # Java JDBC Application with Maven
 
 ## Overview
-Welcome! This repository provides an example Java application designed to help you understand key concepts required for your final sprint project. Please use this example to learn about Maven for dependency management, structuring a Java project using a three-tiered approach, handling user inputs with Scanner, implementing password hashing and user authentication, and storing data in a PostgreSQL (PG) database.
+Welcome, students! This repository provides an example Java application designed to help you understand key concepts required for your final sprint project. This program demonstrates how to use JDBC to interact with a PostgreSQL (PG) database using Java through the Command Line Interface (CLI). Please use this example to learn about Maven for dependency management, structuring a Java project using a three-tiered approach, handling user inputs with Scanner, implementing password hashing and user authentication, and storing data in a PostgreSQL database.
 
 ## Learning Objectives
 - **Dependency Management**: Understand how to use Maven to manage project dependencies.
 - **Project Structure**: Learn how to organize your code using a three-tier architecture (Presentation, Business Logic, Data Access).
 - **User Input Handling**: Discover how to use Scanner for handling user inputs.
 - **Authentication**: Learn about password hashing and implementing user authentication.
-- **Database Integration**: Explore how to store and manage user and car data in a PostgreSQL database.
+- **Database Integration**: Explore how to use JDBC to interact with a PostgreSQL database and manage user and car data.
 
 ## Key Concepts
 ### Dependency Management with Maven
