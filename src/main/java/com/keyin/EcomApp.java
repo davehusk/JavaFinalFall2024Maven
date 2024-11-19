@@ -30,11 +30,9 @@ public class EcomApp {
 
         int choice = 0;
 
-        do {
-            System.out.println("Welcome To Our Aplication!");
-            System.out.println("What Would You Like To Do?");
-            System.out.println("1: Create A New User");
-            System.out.println("2: Login The User");
+            while(true){
+                displayMainMenu(sc);
+
             choice = sc.nextInt();
 
             switch (choice) {
@@ -45,13 +43,24 @@ public class EcomApp {
                     loginUser(sc);
                     break;
 
+                    case 3:
+                        System.out.println("Exiting App... Peace Out");
+                        return;
+
                 default:
                     break;
             }
-        } while (choice != 2);
-        {
-
         }
+
+
+    }
+
+    private static void displayMainMenu(Scanner sc) {
+        System.out.println("Welcome To Our Aplication!");
+        System.out.println("What Would You Like To Do?");
+        System.out.println("1: Create A New User");
+        System.out.println("2: Login The User");
+        System.out.println("3: Exit Application");
 
     }
 
@@ -75,19 +84,26 @@ public class EcomApp {
     }
 
     private static void kyleDashBoard(Scanner sc, User loggedInUser) throws SQLException {
-        System.out.println("Welcome To Kyle Dash Board");
-        System.out.println("Please Choose What You Wanna Do!");
-        System.out.println("1: Print Kyle info");
-        System.out.println("2: Create A New Car ");
-        System.out.println("3: See All Cars For Kyle ");
-        int choice = sc.nextInt();
+        while(true){
+            System.out.println("Welcome To Kyle Dash Board");
+            System.out.println("Please Choose What You Wanna Do!");
+            System.out.println("1: Print Kyle info");
+            System.out.println("2: Create A New Car ");
+            System.out.println("3: See All Cars For Kyle ");
+            System.out.println("4: Exit Back To Main");
+            int choice = sc.nextInt();
 
-        if (choice == 1) {
-            printKyleInfo(loggedInUser);
-        } else if (choice == 2) {
-            createNewCarDashBoard(sc,loggedInUser);
-        } else if (choice == 3) {
-            printCarsForUser(loggedInUser);
+            if (choice == 1) {
+                printKyleInfo(loggedInUser);
+            } else if (choice == 2) {
+                createNewCarDashBoard(sc,loggedInUser);
+            } else if (choice == 3) {
+                printCarsForUser(loggedInUser);
+            } else{
+                return;
+            }
+
+
         }
 
 
