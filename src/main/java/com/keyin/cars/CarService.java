@@ -26,7 +26,6 @@ public class CarService {
     }
 
     public void getCarForSellerById(User user) throws SQLException {
-
         if(user == null){
             System.out.println("Provide A User Please ");
         }else {

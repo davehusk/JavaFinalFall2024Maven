@@ -10,7 +10,6 @@ import java.sql.SQLException;
 public class UserDAO {
 
     public void getAllUsers() throws SQLException {
-
         ResultSet rs = null;
         String sql = "SELECT * FROM users";
         try (Connection conn = DatabaseConnection.getConnection();

@@ -130,8 +130,20 @@ public class EcomApp {
     }
 
 
-    private static void registerUser(Scanner sc) {
-        System.out.println("Register");
+    private static void registerUser(Scanner sc) throws SQLException {
+        System.out.println("Create User Menu.......");
+        System.out.println("------------------------------");
+        System.out.println("Enter Username:");
+        String userName = sc.next();
+        System.out.println("Enter Email:");
+        String email = sc.next();
+        System.out.println("Enter Password:");
+        String password = sc.next();
+        System.out.println("---------------------------");
+
+        User user = new User(userName,email,password);
+
+        userService.addUser(user);
     }
 
 
