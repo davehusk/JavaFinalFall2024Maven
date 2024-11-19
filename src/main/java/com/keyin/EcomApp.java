@@ -79,14 +79,23 @@ public class EcomApp {
         System.out.println("Please Choose What You Wanna Do!");
         System.out.println("1: Print Kyle info");
         System.out.println("2: Create A New Car ");
+        System.out.println("3: See All Cars For Kyle ");
         int choice = sc.nextInt();
 
         if (choice == 1) {
             printKyleInfo(loggedInUser);
         } else if (choice == 2) {
             createNewCarDashBoard(sc,loggedInUser);
+        } else if (choice == 3) {
+            printCarsForUser(loggedInUser);
         }
 
+
+    }
+
+    private static void printCarsForUser(User loggedInUser) throws SQLException {
+
+        carService.getCarForSellerById(loggedInUser);
 
     }
 

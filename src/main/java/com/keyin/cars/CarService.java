@@ -1,5 +1,9 @@
 package com.keyin.cars;
 
+
+
+import com.keyin.user.User;
+
 import java.sql.SQLException;
 
 public class CarService {
@@ -19,6 +23,18 @@ public class CarService {
         carDAO.addNewCar(car);
         System.out.println("Car Was Created! Woo!");
         return true;
+    }
+
+    public void getCarForSellerById(User user) throws SQLException {
+
+        if(user == null){
+            System.out.println("Provide A User Please ");
+        }else {
+            carDAO.getAllCarsForUser(user);
+        }
+
+
+
     }
 
 }
