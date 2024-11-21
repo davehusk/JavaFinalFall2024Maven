@@ -13,19 +13,6 @@ public class EcomApp {
    private static final CarService carService = new CarService();
     public static void main(String[] args) throws SQLException {
 
-
-//        userService.login("KHollet","kyle");
-
-//        User user = userService.login("KHollet","kyle");
-//
-//        System.out.println(user.getEmail());
-//        userService.getAllUsers();
-
-
-//        User user = new User("KHollet","k@k.com","kyle");
-//
-//        userService.addUser(user);
-
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
