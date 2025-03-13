@@ -1,3 +1,5 @@
+#THIS IS AI GENNED. I WAS SEEING WHAT IT COULD DO LOL 
+
 # Java JDBC Application with Maven
 
 ## Overview
