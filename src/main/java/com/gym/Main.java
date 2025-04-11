@@ -14,8 +14,8 @@ import com.gym.workout.WorkoutClassService;
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
     private static final UserService userService = new UserService();
-    private static final MembershipService membershipService = new MembershipService();
     private static final WorkoutClassService workoutClassService = new WorkoutClassService();
+    private static final MembershipService membershipService = new MembershipService();
     private static final CheckinService checkinService = new CheckinService();
     private static final PaymentService paymentService = new PaymentService();
 

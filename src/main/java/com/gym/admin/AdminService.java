@@ -1,18 +1,17 @@
 package com.gym.admin;
 
-import com.gym.user.*;
-import com.gym.workout.*;
-import com.gym.membership.MembershipService;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+
+import com.gym.user.User;
+import com.gym.user.UserDAO;
+import com.gym.workout.WorkoutClassService;
 
 public class AdminService {
     private final UserDAO userDAO = new UserDAO();
     private final WorkoutClassService workoutClassService = new WorkoutClassService();
     private final RoleManager roleManager = new RoleManager();
-    private final MembershipService membershipService = new MembershipService();
 
     public void launchAdminDashboard(Scanner sc, User adminUser) throws SQLException {
         while (true) {
