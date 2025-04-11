@@ -1,15 +1,16 @@
-package com.gym.user;
+package com.gym;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class UserServiceTest {
     private final UserService userService = new UserService();
 
     @Test
     public void testPasswordHashing() {
-        String rawPassword = "secure123";
-        User user = new User("test", "test@example.com", rawPassword, "MEMBER");
+        new User("test", "test@example.com", rawPassword, "MEMBER");
+        String hashed = userService.hashPassword(rawPassword); // Ensure hashPassword method exists in UserService
         String hashed = userService.hashPassword(rawPassword);
         assertNotNull(hashed);
         assertNotEquals(rawPassword, hashed);
