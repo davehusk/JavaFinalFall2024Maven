@@ -1,17 +1,15 @@
-package com.keyin.database;
+package com.gym.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:postgresql://localhost:5432/s3finaljava";
+    private static final String URL = "jdbc:postgresql://localhost:5432/gymdb";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "jordan1234";
+    private static final String PASSWORD = "password123";
 
-    public static Connection getConnection() throws SQLException, SQLException {
+    public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
-
-
 }

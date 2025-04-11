@@ -1,68 +1,56 @@
-package com.keyin.user;
+package com.gym.user;
 
-import com.keyin.database.DatabaseConnection;
+import org.mindrot.jbcrypt.BCrypt;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
 
-public class UserDAO {
+public class UserService {
+    private final UserDAO userDAO = new UserDAO();
 
-    public void getAllUsers() throws SQLException {
-        ResultSet rs = null;
-        String sql = "SELECT * FROM users";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                int user_id = rs.getInt("user_id");
-                String username = rs.getString("username");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
+    public void register(Scanner sc) throws SQLException {
+        System.out.print("Username: ");
+        String username = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        System.out.print("Password: ");
+        String password = sc.nextLine();
+        System.out.print("Role (ADMIN/TRAINER/MEMBER): ");
+        String role = sc.nextLine().toUpperCase();
 
-                System.out.println("-------------------------------");
-                System.out.println("Username: " + username);
-                System.out.println("Email: " + email);
-                System.out.println("Password: " + password);
-                System.out.println("------------------------------------");
+        if (!role.matches("ADMIN|TRAINER|MEMBER")) {
+            System.out.println("Invalid role.");
+            return;
+        }
 
-            }
-
-        };
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        User user = new User(username, email, hashed, role);
+        userDAO.insert(user);
+        System.out.println("Registration complete!");
     }
 
-    public void addUser(User user) throws SQLException{
-        String sql = "INSERT INTO users (username,email, password) VALUES (?, ?, ?)";
+    public User login(Scanner sc) throws SQLException {
+        System.out.print("Username: ");
+        String username = sc.nextLine();
+        System.out.print("Password: ");
+        String password = sc.nextLine();
 
-        try(Connection conn = DatabaseConnection.getConnection()){
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.executeUpdate();
+        User user = userDAO.findByUsername(username);
+        if (user == null || !BCrypt.checkpw(password, user.getPassword())) {
+            System.out.println("Invalid username or password.");
+            return null;
+        }
 
+        System.out.println("Login successful. Welcome, " + user.getUsername() + "!");
+        return user;
+    }
+
+    public void listUsers() throws SQLException {
+        List<User> users = userDAO.findAll();
+        for (User u : users) {
+            System.out.printf("ID: %d | Username: %s | Email: %s | Role: %s%n", 
+                u.getId(), u.getUsername(), u.getEmail(), u.getRole());
         }
     }
-
-    public User getUserByUsername(String username) throws SQLException {
-        String sql = "SELECT * FROM users WHERE username = ?";
-        try(Connection conn = DatabaseConnection.getConnection()){
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, username);
-            try (ResultSet rs = preparedStatement.executeQuery()){
-                if (rs.next()) {
-                    return new User(
-                            rs.getInt("user_id"),
-                            rs.getString("username"),
-                            rs.getString("email"),
-                            rs.getString("password")
-
-                    );
-                }
-            }
-        }
-        return null;
-    }
-
 }
