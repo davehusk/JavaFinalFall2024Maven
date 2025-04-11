@@ -1,6 +1,6 @@
 import os
 
-output_file = "project_code_dump.txt"
+output_file = "project_dump.txt"
 allowed_extensions = {".java", ".sql", ".xml"} # {".js", ".ejs", ".html", ".css"}
 exclude_dirs = {} # {"node_modules"}
 

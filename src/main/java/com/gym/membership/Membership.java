@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class Membership {
     private int id;
-    private int userId;
-    private String membershipType;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private final int userId;
+    private final String membershipType;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
     public Membership(int id, int userId, String membershipType, LocalDate startDate, LocalDate endDate) {
         this.id = id;

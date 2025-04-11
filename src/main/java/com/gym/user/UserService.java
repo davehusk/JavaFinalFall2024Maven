@@ -1,10 +1,10 @@
 package com.gym.user;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UserService {
     private final UserDAO userDAO = new UserDAO();
@@ -49,8 +49,8 @@ public class UserService {
     public void listUsers() throws SQLException {
         List<User> users = userDAO.findAll();
         for (User u : users) {
-            System.out.printf("ID: %d | Username: %s | Email: %s | Role: %s%n", 
-                u.getId(), u.getUsername(), u.getEmail(), u.getRole());
+            System.out.printf("ID: %d | Username: %s | Email: %s | Role: %s%n",
+                    u.getId(), u.getUsername(), u.getEmail(), u.getRole());
         }
     }
 }
