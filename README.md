@@ -1,122 +1,224 @@
-# 🏋️ Membership System (Java)
+# 🧠 Gym Membership System – Full User Manual
 
-> Terminal-based Role & Membership Manager for Gyms
-> [![Java](https://img.shields.io/badge/built%20with-Java%2017-blue)](https://www.oracle.com/java/)
-> [![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-blue)](https://www.postgresql.org/)s
-> [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-
-Welcome to the **Membership System**, a modern, clean, and fully-featured CLI application designed for **gym operators, trainers, and members** to manage daily operations like memberships, workout classes, and attendance — directly in the terminal.
-
----
-
-## 📦 Features
-
-✅ Role-based dashboards: **Admin**, **Trainer**, **Member**
-✅ Membership plan creation, purchase, and history
-✅ Secure login with BCrypt password hashing
-✅ Workout class scheduling and attendance
-✅ Admin analytics (revenue, memberships)
-✅ Interactive CLI with cancel/confirm logic
-✅ Full PostgreSQL backend with HikariCP pooling
-✅ Custom logging + validation system
-✅ Ready to extend into GUI or WebApp
+> **Version:** 1.0.0
+> **Author:** David Husk
+> **Technology Stack:** Java 17, Maven, PostgreSQL
+> **Interface:** Command-Line (Terminal)
+> **License:** MIT
 
 ---
 
-## 🔧 Setup (For Developers)
+## 📖 Table of Contents
+
+- [🧠 Gym Membership System – Full User Manual](#-gym-membership-system--full-user-manual)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [📘 Introduction](#-introduction)
+  - [🚀 System Features](#-system-features)
+  - [💾 Installation \& Setup](#-installation--setup)
+    - [✅ Requirements](#-requirements)
+    - [📁 Clone the Repository](#-clone-the-repository)
+    - [🛠️ Database Setup](#️-database-setup)
+  - [▶️ Running the Application](#️-running-the-application)
+    - [Compile the system:](#compile-the-system)
+    - [Start the system:](#start-the-system)
+  - [🧑‍💼 User Roles \& Dashboards](#-user-roles--dashboards)
+  - [🧭 Menu Descriptions](#-menu-descriptions)
+    - [🛡️ Admin Menu](#️-admin-menu)
+    - [📚 Member Menu](#-member-menu)
+    - [🏋️ Trainer Menu](#️-trainer-menu)
+  - [🧱 System Architecture Overview](#-system-architecture-overview)
+  - [🔗 Entity Relationships](#-entity-relationships)
+  - [🧬 Database Schema](#-database-schema)
+    - [Tables Created:](#tables-created)
+  - [🧯 Troubleshooting](#-troubleshooting)
+  - [❓ FAQs](#-faqs)
+  - [✅ License](#-license)
+
+---
+
+## 📘 Introduction
+
+The **Gym Membership System** is a Java-based, terminal-driven application that allows gyms to manage user roles, class attendance, membership plans, and system analytics — all from a simple command-line interface.
+
+This system is designed with usability in mind and offers a scalable foundation for future GUI or web-based extensions.
+
+---
+
+## 🚀 System Features
+
+- 🔐 Secure user login & role-based access
+- 👤 User account registration and management (Admin-only)
+- 💳 Membership plan purchase & management
+- 🧘 Workout class creation, tracking, and attendance
+- 📊 Real-time revenue insights for admins
+- 📅 Attendance history for members
+- ✅ Validation, logging, and transaction-safe operations
+
+---
+
+## 💾 Installation & Setup
+
+### ✅ Requirements
+
+- Java 17+ installed
+- Maven installed
+- PostgreSQL installed and running
+
+### 📁 Clone the Repository
 
 ```bash
 git clone https://github.com/davehusk/MembershipSystem-Java.git
 cd MembershipSystem-Java
-mvn clean compile
 ```
 
-➡️ Make sure PostgreSQL is installed and running with a `membershipsystem` database.
+### 🛠️ Database Setup
 
-Edit `/src/main/resources/application.properties` with your credentials.
+1. Create a PostgreSQL database:
+
+```sql
+CREATE DATABASE membershipsystem;
+```
+
+2. Make sure your database credentials match what's in `/src/main/resources/application.properties`:
+
+```properties
+db.url=jdbc:postgresql://localhost:5432/membershipsystem
+db.user=postgres
+db.password=Password123
+```
+
+You may customize the credentials as needed.
 
 ---
 
-## 🚀 Run the App
+## ▶️ Running the Application
 
-To start:
+### Compile the system:
+
+```bash
+mvn clean compile
+```
+
+### Start the system:
 
 ```bash
 mvn exec:java
 ```
 
-To seed sample users, plans, and classes use this in pgAdmin:
+---
 
-```bash
-schema_seed.sql
+## 🧑‍💼 User Roles & Dashboards
+
+There are **3 distinct roles**, each with their own dashboard and capabilities:
+
+| Role    | Description                                  |
+| ------- | -------------------------------------------- |
+| Admin   | Full access: manage users, plans, revenue    |
+| Trainer | Manage workout classes and attendance        |
+| Member  | Purchase/view memberships and attend classes |
+
+---
+
+## 🧭 Menu Descriptions
+
+### 🛡️ Admin Menu
+
+- View All Users
+- Search for Users
+- Modify or Delete Users
+- View All Memberships
+- View Total Revenue
+- Manage Plans (Create, Edit, Delete)
+
+### 📚 Member Menu
+
+- View Current Membership
+- Purchase New Membership
+- View Available Classes
+- Attend a Class
+- View Attendance History
+
+### 🏋️ Trainer Menu
+
+- Create Workout Class
+- View My Classes
+- Delete a Class
+- View Class Attendance
+
+---
+
+## 🧱 System Architecture Overview
+
+```text
+src/
+├── main/
+│   ├── java/
+│   │   ├── core/              → Menu navigation, Role routing
+│   │   ├── dao/               → Database access objects
+│   │   ├── exceptions/        → Custom error handling
+│   │   ├── menu/              → CLI menu implementations
+│   │   ├── model/             → User, Membership, Class, etc.
+│   │   ├── service/           → Business logic layer
+│   │   └── util/              → Helpers: Input, Logging, DB, Validation
+│   └── resources/             → Configuration files (DB, logback)
 ```
 
 ---
 
-## 🧑‍💻 Developer Resources
-
-* [🛠 DEVELOPER_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/DEVELOPER_MANUAL.md)
-
-  Learn how the system is built, extended, and structured.
-* [🧭 DEVMENU_SYSTEM.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/DEVMENU_SYSTEM.md)
-
-  How to build and link menus like a pro.
-
----
-
-## 📖 Full Documentation for Customers
-
-* [📘 USER_GUIDE.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/USER_GUIDE.md)
-
-  For **end users** who just bought or downloaded the system.
-* [📚 FULL_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/FULL_MANUAL.md)
-
-  A comprehensive manual that explains everything: setup, use, logic, diagrams, and more.
-
----
-
-## 🧠 Tech Stack
-
-| Layer        | Tool/Library         |
-| ------------ | -------------------- |
-| Language     | Java 17              |
-| Build Tool   | Maven                |
-| Database     | PostgreSQL           |
-| Pooling      | HikariCP             |
-| Logging      | SLF4J + Logback      |
-| Passwords    | BCrypt               |
-| Architecture | MVC-inspired CLI App |
-
----
-
-## 📂 Project Structure
+## 🔗 Entity Relationships
 
 ```plaintext
-src/
-├── main/java/
-│   ├── model/          → Data classes (User, Membership, etc.)
-│   ├── dao/            → SQL logic + PostgreSQL interaction
-│   ├── service/        → Business logic
-│   ├── menu/           → Role-specific terminal menus
-│   ├── core/           → Entry point + routing + factory
-│   └── util/           → Logging, input, validation
-└── resources/
-    ├── application.properties
-    └── logback.xml
+User (id)
+├── Membership (user_id → id)
+│   └── MembershipPlan (plan_id → id)
+├── WorkoutClass (trainer_id → id)
+└── ClassAttendance (user_id → id, class_id → WorkoutClass.id)
 ```
 
----
-
-## 🤝 License
-
-Licensed under the [MIT License](https://github.com/davehusk/MembershipSystem-Java/blob/main/LICENSE).
-
-Use it freely, extend it endlessly. Just don't forget to ⭐ the repo!
+All data is relational and validated using DAO queries and helper methods.
 
 ---
 
-## 🙋 Support & Contributions
+## 🧬 Database Schema
 
-Open an [issue](https://github.com/davehusk/MembershipSystem-Java/issues) or submit a PR with improvements, fixes, or feature ideas.
+The system includes a SQL script `schema.sql` for reference or manual resets.
 
-Let’s build the cleanest, most powerful CLI system in the Java world 💪
+### Tables Created:
+
+- `users`
+- `membership_plans`
+- `memberships`
+- `workout_classes`
+- `class_attendance`
+
+All foreign keys are enforced with proper constraints.
+
+---
+
+## 🧯 Troubleshooting
+
+- **App fails to start?**Check DB config in `application.properties` and confirm PostgreSQL is running.
+- **Login fails with valid credentials?**Ensure the password is typed correctly — it's case-sensitive and hashed via BCrypt.
+- **I see weird characters in the terminal.**
+  Ensure your terminal supports ANSI escape sequences for screen clearing.
+
+---
+
+## ❓ FAQs
+
+**Q: Can I add more roles?**
+Yes. Just update the `VALID_ROLES` set in `ValidationUtil` and extend logic in `RoleRouterMenu`.
+
+**Q: Is the system secure?**
+All passwords are hashed using [BCrypt](https://github.com/jeremyh/jBCrypt). Inputs are validated.
+
+**Q: Can this be extended into a GUI or web app?**
+Absolutely. This backend is modular and built for clean separation — making it easy to plug into a web or desktop frontend.
+
+---
+
+## ✅ License
+
+This project is licensed under the MIT License. Feel free to use and expand it for your own gym or as a project portfolio piece.
+
+---
