@@ -1,8 +1,9 @@
-# 🏋️ Membership System (Java)  
-> Terminal-based Role & Membership Manager for Gyms  
-[![Java](https://img.shields.io/badge/built%20with-Java%2017-blue)](https://www.oracle.com/java/)
-[![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-blue)](https://www.postgresql.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+# 🏋️ Membership System (Java)
+
+> Terminal-based Role & Membership Manager for Gyms
+> [![Java](https://img.shields.io/badge/built%20with-Java%2017-blue)](https://www.oracle.com/java/)
+> [![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-blue)](https://www.postgresql.org/)s
+> [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 Welcome to the **Membership System**, a modern, clean, and fully-featured CLI application designed for **gym operators, trainers, and members** to manage daily operations like memberships, workout classes, and attendance — directly in the terminal.
 
@@ -10,14 +11,14 @@ Welcome to the **Membership System**, a modern, clean, and fully-featured CLI ap
 
 ## 📦 Features
 
-✅ Role-based dashboards: **Admin**, **Trainer**, **Member**  
-✅ Membership plan creation, purchase, and history  
-✅ Secure login with BCrypt password hashing  
-✅ Workout class scheduling and attendance  
-✅ Admin analytics (revenue, memberships)  
-✅ Interactive CLI with cancel/confirm logic  
-✅ Full PostgreSQL backend with HikariCP pooling  
-✅ Custom logging + validation system  
+✅ Role-based dashboards: **Admin**, **Trainer**, **Member**
+✅ Membership plan creation, purchase, and history
+✅ Secure login with BCrypt password hashing
+✅ Workout class scheduling and attendance
+✅ Admin analytics (revenue, memberships)
+✅ Interactive CLI with cancel/confirm logic
+✅ Full PostgreSQL backend with HikariCP pooling
+✅ Custom logging + validation system
 ✅ Ready to extend into GUI or WebApp
 
 ---
@@ -44,10 +45,10 @@ To start:
 mvn exec:java
 ```
 
-To seed sample users, plans, and classes:
+To seed sample users, plans, and classes use this in pgAdmin:
 
 ```bash
-mvn exec:java -Dexec.args="--seed"
+schema_seed.sql
 ```
 
 ---
@@ -71,18 +72,6 @@ mvn exec:java -Dexec.args="--seed"
 * [📚 FULL_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/FULL_MANUAL.md)
 
   A comprehensive manual that explains everything: setup, use, logic, diagrams, and more.
-
----
-
-## 🔑 Default Test Accounts
-
-> These are loaded when you run with `--seed`
-
-| Role    | Email                                          | Password  |
-| ------- | ---------------------------------------------- | --------- |
-| Admin   | [admin@example.com](mailto:admin@example.com)     | admin123  |
-| Trainer | [trainer@example.com](mailto:trainer@example.com) | train123  |
-| Member  | [member@example.com](mailto:member@example.com)   | member123 |
 
 ---
 

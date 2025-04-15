@@ -26,9 +26,7 @@
     - [➕ Add New Entity (e.g., Equipment)](#-add-new-entity-eg-equipment)
     - [🔄 Add a Command or Menu Item](#-add-a-command-or-menu-item)
   - [✅ Code Standards](#-code-standards)
-  - [🧪 Testing \& Seeding](#-testing--seeding)
-    - [Seeding](#seeding)
-  - [🤝 Contributing](#-contributing)
+  - [� Contributing](#-contributing)
     - [Guidelines](#guidelines)
     - [Coming Soon](#coming-soon)
     - [📩 Contact](#-contact)
@@ -77,10 +75,10 @@ src/
 ## 🧩 Key Components
 
 ### `Main.java`
-Entry point. It initializes DB and optionally seeds the database using:
+Entry point:
 
 ```bash
-mvn exec:java -Dexec.args="--seed"
+mvn exec:java
 ```
 
 ### `ServiceFactory.java`
@@ -99,7 +97,6 @@ Uses **HikariCP** for efficient connection pooling.
 ```text
 Main.java
  └── DBConnection.get()
- └── Seeder.seed() [optional]
  └── new MainMenu().show()
         ├── AuthService handles login
         └── RoleRouterMenu → AdminMenu / TrainerMenu / MemberMenu
@@ -175,25 +172,6 @@ menu.addItem("Do Something Cool", () -> {
 - Clear package organization
 - Logging through `Log.java` using SLF4J + Logback
 - DAO pattern uses `try-with-resources` and `PreparedStatements`
-
----
-
-## 🧪 Testing & Seeding
-
-### Seeding
-
-Use:
-
-```bash
-mvn exec:java -Dexec.args="--seed"
-```
-
-Seeds:
-
-- 3 users (Admin, Trainer, Member)
-- 2 membership plans
-- 1 class
-- 1 attendance log
 
 ---
 

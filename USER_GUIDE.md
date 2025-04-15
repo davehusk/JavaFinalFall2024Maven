@@ -51,9 +51,9 @@ Ask your administrator for login details, OR try:
 
 | Role   | Email                | Password   |
 |--------|----------------------|------------|
-| Admin  | admin@example.com    | admin123   |
-| Trainer| trainer@example.com  | train123   |
-| Member | member@example.com   | member123  |
+| Admin  | admin@gym.com    | admin123   |
+| Trainer| trainer@gym.com  | train123   |
+| Member | member@gym.com   | member123  |
 
 ---
 

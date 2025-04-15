@@ -1,10 +1,10 @@
 # 🧠 Gym Membership System – Full User Manual
 
-> **Version:** 1.0.0  
-> **Author:** David Husk  
-> **Technology Stack:** Java 17, Maven, PostgreSQL  
-> **Interface:** Command-Line (Terminal)  
-> **License:** MIT  
+> **Version:** 1.0.0
+> **Author:** David Husk
+> **Technology Stack:** Java 17, Maven, PostgreSQL
+> **Interface:** Command-Line (Terminal)
+> **License:** MIT
 
 ---
 
@@ -20,7 +20,6 @@
     - [🛠️ Database Setup](#️-database-setup)
   - [▶️ Running the Application](#️-running-the-application)
     - [Compile the system:](#compile-the-system)
-    - [(Optional) Seed database with sample users/plans/classes:](#optional-seed-database-with-sample-usersplansclasses)
     - [Start the system:](#start-the-system)
   - [🧑‍💼 User Roles \& Dashboards](#-user-roles--dashboards)
   - [🧭 Menu Descriptions](#-menu-descriptions)
@@ -31,8 +30,7 @@
   - [🔗 Entity Relationships](#-entity-relationships)
   - [🧬 Database Schema](#-database-schema)
     - [Tables Created:](#tables-created)
-  - [🧪 Default Test Users](#-default-test-users)
-  - [🧯 Troubleshooting](#-troubleshooting)
+  - [� Troubleshooting](#-troubleshooting)
   - [❓ FAQs](#-faqs)
   - [✅ License](#-license)
 
@@ -55,7 +53,6 @@ This system is designed with usability in mind and offers a scalable foundation 
 - 📊 Real-time revenue insights for admins
 - 📅 Attendance history for members
 - ✅ Validation, logging, and transaction-safe operations
-- 🧪 Seeder for testing and demo purposes
 
 ---
 
@@ -102,12 +99,6 @@ You may customize the credentials as needed.
 mvn clean compile
 ```
 
-### (Optional) Seed database with sample users/plans/classes:
-
-```bash
-mvn exec:java -Dexec.args="--seed"
-```
-
 ### Start the system:
 
 ```bash
@@ -120,11 +111,11 @@ mvn exec:java
 
 There are **3 distinct roles**, each with their own dashboard and capabilities:
 
-| Role   | Description                              |
-|--------|------------------------------------------|
-| Admin  | Full access: manage users, plans, revenue|
-| Trainer| Manage workout classes and attendance     |
-| Member | Purchase/view memberships and attend classes |
+| Role    | Description                                  |
+| ------- | -------------------------------------------- |
+| Admin   | Full access: manage users, plans, revenue    |
+| Trainer | Manage workout classes and attendance        |
+| Member  | Purchase/view memberships and attend classes |
 
 ---
 
@@ -193,6 +184,7 @@ All data is relational and validated using DAO queries and helper methods.
 The system includes a SQL script `schema.sql` for reference or manual resets.
 
 ### Tables Created:
+
 - `users`
 - `membership_plans`
 - `memberships`
@@ -203,46 +195,29 @@ All foreign keys are enforced with proper constraints.
 
 ---
 
-## 🧪 Default Test Users
-
-After seeding with `--seed`, these accounts are available:
-
-| Role   | Email                  | Password    |
-|--------|------------------------|-------------|
-| Admin  | admin@example.com      | admin123    |
-| Trainer| trainer@example.com    | train123    |
-| Member | member@example.com     | member123   |
-
----
-
 ## 🧯 Troubleshooting
 
-- **App fails to start?**  
-  Check DB config in `application.properties` and confirm PostgreSQL is running.
+- **App fails to start?**Check DB config in `application.properties` and confirm PostgreSQL is running.
+- **Login fails with valid credentials?**Ensure the password is typed correctly — it's case-sensitive and hashed via BCrypt.
+- **No plans/classes show up?**Seed your database with:
 
-- **Login fails with valid credentials?**  
-  Ensure the password is typed correctly — it's case-sensitive and hashed via BCrypt.
-
-- **No plans/classes show up?**  
-  Seed your database with:  
-  ```bash
-  mvn exec:java -Dexec.args="--seed"
+  ```text
+  schema_seed.sql
   ```
-
-- **I see weird characters in the terminal.**  
+- **I see weird characters in the terminal.**
   Ensure your terminal supports ANSI escape sequences for screen clearing.
 
 ---
 
 ## ❓ FAQs
 
-**Q: Can I add more roles?**  
+**Q: Can I add more roles?**
 Yes. Just update the `VALID_ROLES` set in `ValidationUtil` and extend logic in `RoleRouterMenu`.
 
-**Q: Is the system secure?**  
+**Q: Is the system secure?**
 All passwords are hashed using [BCrypt](https://github.com/jeremyh/jBCrypt). Inputs are validated.
 
-**Q: Can this be extended into a GUI or web app?**  
+**Q: Can this be extended into a GUI or web app?**
 Absolutely. This backend is modular and built for clean separation — making it easy to plug into a web or desktop frontend.
 
 ---
