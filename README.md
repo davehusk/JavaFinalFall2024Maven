@@ -54,10 +54,10 @@ mvn exec:java -Dexec.args="--seed"
 
 ## 🧑‍💻 Developer Resources
 
-* [🛠 DEVELOPER_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/main/DEVELOPER_MANUAL.md)
+* [🛠 DEVELOPER_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/DEVELOPER_MANUAL.md)
 
   Learn how the system is built, extended, and structured.
-* [🧭 DEVMENU_SYSTEM.md](https://github.com/davehusk/MembershipSystem-Java/blob/main/DEVMENU_SYSTEM.md)
+* [🧭 DEVMENU_SYSTEM.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/DEVMENU_SYSTEM.md)
 
   How to build and link menus like a pro.
 
@@ -65,10 +65,10 @@ mvn exec:java -Dexec.args="--seed"
 
 ## 📖 Full Documentation for Customers
 
-* [📘 USER_GUIDE.md](https://github.com/davehusk/MembershipSystem-Java/blob/main/USER_GUIDE.md)
+* [📘 USER_GUIDE.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/USER_GUIDE.md)
 
   For **end users** who just bought or downloaded the system.
-* [📚 FULL_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/main/FULL_MANUAL.md)
+* [📚 FULL_MANUAL.md](https://github.com/davehusk/MembershipSystem-Java/blob/master/FULL_MANUAL.md)
 
   A comprehensive manual that explains everything: setup, use, logic, diagrams, and more.
 
